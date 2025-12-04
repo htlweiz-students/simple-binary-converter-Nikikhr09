@@ -1,10 +1,12 @@
-namespace sample;
+using System;
 
-public class BinaryConverter : IBinary
+namespace Converter
 {
-    public ulong ConvertBinary(string binary)
+    public class BinaryConverter : IBinary
     {
-       
-        return Convert.ToUInt64(binary, 2);
+        public ulong ToDecimal(string binary)
+        {
+            return Convert.ToUInt64(binary, 2);
+        }
     }
 }

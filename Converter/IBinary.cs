@@ -1,6 +1,7 @@
-namespace Converter;
-
-public interface IBinary
+namespace Converter
 {
-    ulong ConvertBinary(string binary); 
+    public interface IBinary
+    {
+        ulong ToDecimal(string binary);
+    }
 }

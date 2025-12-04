@@ -1,18 +1,32 @@
-﻿using sample; 
+﻿using System;
 
-namespace converter;
-
-class Program
+namespace Converter
 {
-    public static int Main(string[] argv)
+    class Program
     {
-        Console.WriteLine("Gib eine Binärzahl ein (nur 0 und 1):");
-        string input = Console.ReadLine() ?? "";
+        static void Main(string[] args)
+        {
+            string input = "";
 
-        BinaryConverter conv = new BinaryConverter();
-        ulong dezimal = conv.ConvertBinary(input);
+            Console.WriteLine("Gib eine Binärzahl ein (nur 0 und 1 – anderes Zeichen stoppt):");
 
-        Console.WriteLine($"Dezimalwert: {dezimal}");
-        return 0;
+            while (true)
+            {
+                char c = Console.ReadKey(true).KeyChar;
+
+                if (c != '0' && c != '1')
+                    break;
+
+                Console.Write(c);
+                input += c;
+            }
+
+            Console.WriteLine("\n\nEingegeben: " + input);
+
+            IBinary converter = new BinaryConverter();
+            ulong result = converter.ToDecimal(input);
+
+            Console.WriteLine("Dezimalwert: " + result);
+        }
     }
 }
